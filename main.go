@@ -1,13 +1,13 @@
 package main
 
 import (
-	// "book-api/db"
-	// "book-api/routers"
+	"book-api/db"
+	"book-api/routers"
 )
 
 func main() {
-	// db.Init()
-	// defer db.DB.Close()
+	db.Init()
+	defer db.DB.Close()
 
-	// routers.StartServer().Run(":8080")
+	routers.StartServer().Run(":8080")
 }
