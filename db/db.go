@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	migrate "github.com/rubenv/sql-migrate"
 )
@@ -21,9 +22,18 @@ var (
 
 
 func DBConnection() {
-	psqlInfo := fmt.Sprintf(`host=%s port=%s user=%s password=%s dbname=%s sslmode=disable`,
-       os.Getenv("PGHOST"), os.Getenv("PGPORT"), os.Getenv("PGUSER"), os.Getenv("PGPASSWORD"), os.Getenv("PGDATABASE"),
-   )
+   err = godotenv.Load("config/.env")
+    if err != nil {
+       panic("Error loading .env file")
+    }
+
+    psqlInfo := fmt.Sprintf(`host=%s port=%s user=%s password=%s dbname=%s sslmode=disable`,
+       os.Getenv("PGHOST"),
+       os.Getenv("PGPORT"),
+       os.Getenv("PGUSER"),
+       os.Getenv("PGPASSWORD"),
+       os.Getenv("PGDATABASE"),
+    )
 
 	DB, err = sql.Open("postgres", psqlInfo)
 	if err != nil {
