@@ -2,9 +2,11 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
-	_ "github.com/lib/pq"
 	"embed"
+	"fmt"
+	"os"
+
+	_ "github.com/lib/pq"
 	migrate "github.com/rubenv/sql-migrate"
 )
 
@@ -19,9 +21,9 @@ var (
 
 
 func DBConnection() {
-	psqlInfo := fmt.Sprintf(`host=%s port=%d user=%s password=%s dbname=%s sslmode=disable`,
-       "localhost", 5432, "postgres", "root", "book-api",
-    )
+	psqlInfo := fmt.Sprintf(`host=%s port=%s user=%s password=%s dbname=%s sslmode=disable`,
+       os.Getenv("PGHOST"), os.Getenv("PGPORT"), os.Getenv("PGUSER"), os.Getenv("PGPASSWORD"), os.Getenv("PGDATABASE"),
+   )
 
 	DB, err = sql.Open("postgres", psqlInfo)
 	if err != nil {
