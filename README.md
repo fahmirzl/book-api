@@ -95,6 +95,9 @@ Use **Basic Authentication** in header:
 ```http
 Authorization: Basic base64(username:password)
 ```
+**Default credentials (for testing):**
+- username: `root`
+- password: `root`
 
 ---
 
@@ -108,3 +111,9 @@ Authorization: Basic base64(username:password)
 ├── repositories/
 └── structs/
 ```
+
+---
+
+## 📚 Purpose
+
+This project was created as part of the final submission for the Sanbercode Golang Backend program.
