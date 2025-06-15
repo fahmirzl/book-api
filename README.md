@@ -46,7 +46,7 @@ Book API is a simple RESTful API built with Golang and Gin, used to manage data 
 ## 📘 Api EndPoint
 ### 📚 Book
 
-| Method | Endpoint                    | Deskripsi               |
+| Method | Endpoint                    | Description               |
 |--------|-----------------------------|-------------------------|
 | GET    | `/api/books`                | Retrieve all book       |
 | GET    | `/api/books/:id`            | Retrieve book by ID     |
@@ -71,7 +71,7 @@ Example JSON Body:
 
 ### 🗂️ Category
 
-| Method | Endpoint                    | Deskripsi               |
+| Method | Endpoint                    | Description               |
 |--------|-----------------------------|-------------------------|
 | GET    | `/api/categories`           | Retrieve all category   |
 | GET    | `/api/categories/:id`       | Retrieve category by ID |
@@ -117,4 +117,4 @@ Authorization: Basic base64(username:password)
 
 ## 📚 Purpose
 
-This project was created as part of the final submission for the Sanbercode Golang Backend program.
+This project was created as part of the quiz submission for the Sanbercode Golang Backend program.
