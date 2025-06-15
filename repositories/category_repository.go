@@ -55,7 +55,7 @@ func GetCategoryById(dbParam *sql.DB, category *structs.Category) error {
 
 func GetBookByCategoryId(dbParam *sql.DB, category *structs.Category) (result []structs.Book, err error) {
 	sql := `SELECT books.* FROM books INNER JOIN categories ON books.category_id = categories.id where categories.id = $1`
-	rows, err := dbParam.Query(sql)
+	rows, err := dbParam.Query(sql, category.ID)
 	if err != nil {
 		panic(err)
 	}
