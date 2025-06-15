@@ -6,7 +6,7 @@ Book API is a simple RESTful API built with Golang and Gin, used to manage data 
 
 ## 🚀 Feature
 
-- CRUD operations for Books, Categories, and Users  
+- CRUD operations for Books, and Categories
 - Input validation  
 - Connection to PostgreSQL  
 - Structured JSON responses  
