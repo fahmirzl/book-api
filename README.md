@@ -78,6 +78,7 @@ Example JSON Body:
 | POST   | `/api/categories`           | Add a new category      |
 | PUT    | `/api/categories/:id`       | Update a category by ID |
 | DELETE | `/api/categories/:id`       | Delete a category by ID |
+| GET | `/api/categories/:id/books`       | Retrieve book by category ID |
 
 Example JSON Body:
 ```json
