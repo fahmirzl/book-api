@@ -67,6 +67,10 @@ func GetBookByCategoryId(dbParam *sql.DB, category *structs.Category) (result []
 		if err != nil {
 			panic(err)
 		}
+		var categories structs.Category
+		categories.ID = *book.CategoryID
+		_ = GetCategoryById(dbParam, &categories)
+		book.Category = categories
 		result = append(result, book)
 	}
 	return

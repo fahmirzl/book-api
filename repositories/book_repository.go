@@ -21,7 +21,7 @@ func GetAllBook(dbParam *sql.DB) (result []structs.Book, err error) {
 		if err != nil {
 			panic(err)
 		}
-		category.ID = book.ID
+		category.ID = *book.CategoryID
 		_ = GetCategoryById(dbParam, &category)
 		book.Category = category
 		result = append(result, book)
