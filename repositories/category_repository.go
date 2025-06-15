@@ -52,3 +52,22 @@ func GetCategoryById(dbParam *sql.DB, category *structs.Category) error {
 	err := dbParam.QueryRow(sql, category.ID).Scan(&category.ID, &category.Name, &category.CreatedAt, &category.CreatedBy, &category.ModifiedAt, &category.ModifiedBy)
 	return err
 }
+
+func GetBookByCategoryId(dbParam *sql.DB, category *structs.Category) (result []structs.Book, err error) {
+	sql := `SELECT books.* FROM books INNER JOIN categories ON books.category_id = categories.id where categories.id = $1`
+	rows, err := dbParam.Query(sql)
+	if err != nil {
+		panic(err)
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		var book structs.Book
+		err = rows.Scan(&book.ID, &book.Title, &book.Description, &book.ImageURL, &book.ReleaseYear, &book.Price, &book.TotalPage, &book.Thickness, &book.CategoryID, &book.CreatedAt, &book.CreatedBy, &book.ModifiedAt, &book.ModifiedBy)
+		if err != nil {
+			panic(err)
+		}
+		result = append(result, book)
+	}
+	return
+}

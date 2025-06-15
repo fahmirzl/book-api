@@ -189,3 +189,25 @@ func CategoryDestroy(c *gin.Context) {
 		Data: nil,
 	})
 }
+
+func CategoryWithBook(c *gin.Context) {
+	var category structs.Category
+	id, _ := strconv.Atoi(c.Param("id"))
+	category.ID = id
+
+	book, err := repositories.GetBookByCategoryId(db.DB, &category)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, structs.Response{
+			Message: "Internal server error",
+			Error:   "Internal Server Error",
+			Data:    nil,
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, structs.Response{
+		Message: fmt.Sprintf("Book where category_id %d retrieved successfully", id),
+		Error:   nil,
+		Data:    book,
+	})
+}

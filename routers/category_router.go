@@ -14,4 +14,5 @@ func CategoryRouter(rg *gin.RouterGroup) {
 	category.GET("/:id", middlewares.Auth(), handlers.CategoryFind)
 	category.PUT("/:id", middlewares.Auth(), handlers.CategoryUpdate)
 	category.DELETE("/:id", middlewares.Auth(), handlers.CategoryDestroy)
+	category.GET("/:id/books", middlewares.Auth(), handlers.CategoryWithBook)
 }
